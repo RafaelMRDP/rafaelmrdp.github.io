@@ -5,21 +5,25 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
-        <script>
-            function executar() {
-              document.getElementById("nome_completo").textContent = document.getElementById("inputNome").value + " " + document.getElementById("inputSobrenome").value;
-              document.getElementById('perfil').style.display = '';
-              if(document.getElementById("masculino").checked == true){
-                document.getElementById("info").textContent = "Sexo: Masculino";
-              }
-              if(document.getElementById("feminino").checked == true){
-                document.getElementById("info").textContent = "Sexo: Feminino";
-              }
-              if(document.getElementById("outros").checked == true){
-                document.getElementById("info").textContent = "Sexo: Outros";
-              }
-			      }
-        </script>
+      <script>
+        function executar() {
+          document.getElementById('nome_completo').textContent = document.getElementById('nome').value + ' ' + document.getElementById('sobrenome').value;
+          if(document.getElementById('masculino').checked == true){
+            document.getElementById('info').textContent = 'Sexo: Masculino';
+          }
+          if(document.getElementById('feminino').checked == true){
+            document.getElementById('info').textContent = 'Sexo: Feminino';
+          }
+          if(document.getElementById('outros').checked == true){
+            document.getElementById('info').textContent = 'Sexo: Outros';
+          }
+
+          document.getElementById('info').textContent = document.getElementById('info').textContent + " Escolaridade: " + document.getElementById('Escolaridade').value;
+
+          document.getElementById('perfil').style.display = '';
+				}
+      </script>
+
         <style>
             .centralizar{
                 text-align: center;
@@ -44,26 +48,22 @@
               <a class="nav-link disabled" href="#">Perfil</a>
             </li>
           </ul>
-
-          <div class="centralizar">
-            <div id="perfil" class="card" style="width: 18rem; display: none">
-              <img class="card-img-top" src="imagens/perfil.svg" alt="Imagem de capa do card">
-              <div class="card-body">
-                <h5 id="nome_completo" class="card-title"></h5>
-                <p id="info" class="card-text"></p>
-              </div>
+          <div id="perfil" class="card" style="width: 18rem; display: none;">
+            <img class="card-img-top" src="Imagens/índice.svg" alt="Imagem de capa do card">
+            <div class="card-body">
+              <h5 id="nome_completo" class="card-title"></h5>
+              <p id="info" class="card-text"></p>
             </div>
           </div>
-
           <form>
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="inputNome4" style="color: white">Nome</label>
-                <input type="text" class="form-control" id="inputNome" placeholder="Nome">
+                <input id="nome"" type="text" class="form-control" placeholder="Nome">
               </div>
               <div class="form-group col-md-6">
                 <label for="inputSobrenome4" style="color: white">Sobrenome</label>
-                <input type="text" class="form-control" id="inputSobrenome" placeholder="Sobrenome">
+                <input id="sobrenome" type="text" class="form-control" placeholder="Sobrenome">
               </div>
             </div>
             <label for="inputNome4" style="color: white">Sexo:</label>
@@ -84,6 +84,10 @@
               <label class="form-check-label" for="exampleRadios2" style="color: white">
                 Outros
               </label>
+            </div>
+            <div class="form-group">
+              <label for="formGroupExampleInput" style="color: white">Escolaridade</label>
+              <input type="text" class="form-control" id="Escolaridade" placeholder="Escolaridade">
             </div>
             <br>
             <button id="executar2" type="button" class="btn btn-primary btn-lg" onclick="executar()">Cadastrar</button>
